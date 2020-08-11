@@ -58,8 +58,9 @@ def get_geos(value, srid=DEFAULT_PROJ):
                 geos = GEOSGeometry(match.group('wkt'), match.group('srid'))
             else:
                 geos = GEOSGeometry(value, srid)
-    if geos and geos.srid and int(srid) != geos.srid:
-        geos.transform(int(srid))
+    ## No limitar solo a 4326
+    #if geos and geos.srid and int(srid) != geos.srid:
+    #    geos.transform(int(srid))
     return geos
 
 def collection_ewkt(fields, srid=DEFAULT_PROJ):
